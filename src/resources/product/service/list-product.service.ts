@@ -14,12 +14,14 @@ export class ListProductService implements ListProductUseCase {
     minPrice?: number;
     maxPrice?: number;
     categoryId?: number;
+    subcategoryId?: number;
   }): Promise<Product[]> {
     const products = await this.listProductRepository.listProduct({
       name: input.name,
       minPrice: input.minPrice,
       maxPrice: input.maxPrice,
       categoryId: input.categoryId,
+      subcategoryId: input.subcategoryId,
     });
     return products;
   }

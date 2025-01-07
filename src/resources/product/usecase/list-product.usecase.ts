@@ -6,5 +6,6 @@ export abstract class ListProductUseCase {
     minPrice?: number;
     maxPrice?: number;
     categoryId?: number;
+    subcategoryId?: number;
   }): Promise<Product[]>;
 }
