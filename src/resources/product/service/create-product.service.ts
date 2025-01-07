@@ -13,18 +13,18 @@ export class CreateProductService implements CreateProductUseCase {
 
   async createProduct(input: {
     name: string;
-    photo?: string;
+    image?: string;
     description?: string;
     price: number;
     categoryId: number;
     subcategoryId?: number;
-    quantity: number;
     discountPrice?: number;
   }): Promise<Product> {
     const existingProduct = await this.findProductRepository.findProduct({
       name: input.name,
     });
-    if (existingProduct) throw new ConflictException('Product already exists!');
+    if (existingProduct)
+      throw new ConflictException('Product name already exists!');
     if (input.discountPrice && input.discountPrice >= input.price)
       throw new ConflictException(
         'Discount price must be less than the price!',
@@ -33,12 +33,11 @@ export class CreateProductService implements CreateProductUseCase {
       throw new ConflictException('Price must be greater than 1!');
     const product = await this.createProductRepository.createProduct({
       name: input.name,
-      photo: input.photo,
+      image: input.image,
       description: input.description,
       price: input.price,
       categoryId: input.categoryId,
       subcategoryId: input.subcategoryId,
-      quantity: input.quantity,
       discountPrice: input.discountPrice,
     });
     return product;
