@@ -9,5 +9,6 @@ export abstract class CreateProductRepositoryContract {
     categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
+    active: boolean;
   }): Promise<Product>;
 }
