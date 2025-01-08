@@ -1,7 +1,10 @@
+import { SubCategoryModel } from 'src/resources/subcategory/model/subcategory.model';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,10 +26,8 @@ export class ProductModel {
   @Column({ nullable: true, name: 'discount_price' })
   discountPrice?: number;
 
-  @Column({ name: 'category_id' })
-  categoryId: number;
-
-  @Column({ nullable: true, name: 'subcategory_id' })
+  @ManyToOne(() => SubCategoryModel, (subcategory) => subcategory.id)
+  @JoinColumn({ name: 'subcategory_id' })
   subcategoryId?: number;
 
   @Column({ name: 'active' })

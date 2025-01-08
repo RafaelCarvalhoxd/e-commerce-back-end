@@ -15,7 +15,6 @@ export class CreateProductRepository
     image?: string;
     description?: string;
     price: number;
-    categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
     active: boolean;
@@ -29,7 +28,6 @@ export class CreateProductRepository
         image: input.image,
         description: input.description,
         price: input.price,
-        categoryId: input.categoryId,
         subcategoryId: input.subcategoryId,
         discountPrice: input.discountPrice,
         active: input.active,
