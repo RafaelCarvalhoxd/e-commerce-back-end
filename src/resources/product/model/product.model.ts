@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('product')
 export class ProductModel {
@@ -29,9 +35,9 @@ export class ProductModel {
   @Column({ nullable: true, name: 'image' })
   image?: string;
 
-  @Column({ name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @Column({ nullable: true, name: 'updated_at' })
+  @UpdateDateColumn({ nullable: true, name: 'updated_at' })
   updatedAt?: Date;
 }
