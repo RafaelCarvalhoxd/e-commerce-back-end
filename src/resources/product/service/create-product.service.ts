@@ -19,6 +19,7 @@ export class CreateProductService implements CreateProductUseCase {
     categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
+    active: boolean;
   }): Promise<Product> {
     const existingProduct = await this.findProductRepository.findProduct({
       name: input.name,
@@ -39,6 +40,7 @@ export class CreateProductService implements CreateProductUseCase {
       categoryId: input.categoryId,
       subcategoryId: input.subcategoryId,
       discountPrice: input.discountPrice,
+      active: input.active,
     });
     return product;
   }
