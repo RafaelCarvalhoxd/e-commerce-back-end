@@ -1,11 +1,12 @@
+import { SubCategory } from 'src/resources/subcategory/entity/subcategory.entity';
+
 export class Product {
   id: number;
   name: string;
   description?: string;
   price: number;
   discountPrice?: number;
-  categoryId: number;
-  subcategoryId?: number;
+  subcategory?: SubCategory;
   active: boolean;
   image?: string;
   createdAt: Date;
@@ -17,8 +18,7 @@ export class Product {
     description: string,
     price: number,
     discountPrice: number,
-    categoryId: number,
-    subcategoryId: number,
+    subcategory: SubCategory,
     active: boolean,
     image: string,
     createdAt: Date,
@@ -29,8 +29,7 @@ export class Product {
     this.description = description;
     this.price = price;
     this.discountPrice = discountPrice;
-    this.categoryId = categoryId;
-    this.subcategoryId = subcategoryId;
+    this.subcategory = subcategory;
     this.active = active;
     this.image = image;
     this.createdAt = createdAt;

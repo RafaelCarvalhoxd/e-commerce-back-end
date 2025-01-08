@@ -16,7 +16,6 @@ export class CreateProductService implements CreateProductUseCase {
     image?: string;
     description?: string;
     price: number;
-    categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
     active: boolean;
@@ -37,7 +36,6 @@ export class CreateProductService implements CreateProductUseCase {
       image: input.image,
       description: input.description,
       price: input.price,
-      categoryId: input.categoryId,
       subcategoryId: input.subcategoryId,
       discountPrice: input.discountPrice,
       active: input.active,

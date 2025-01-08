@@ -6,7 +6,6 @@ export abstract class CreateProductUseCase {
     image?: string;
     description?: string;
     price: number;
-    categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
     active: boolean;
