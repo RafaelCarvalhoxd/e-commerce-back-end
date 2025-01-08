@@ -9,5 +9,6 @@ export abstract class CreateProductUseCase {
     categoryId: number;
     subcategoryId?: number;
     discountPrice?: number;
+    active: boolean;
   }): Promise<Product>;
 }
