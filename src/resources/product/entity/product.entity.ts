@@ -16,7 +16,9 @@ export class Product {
     name: string,
     description: string,
     price: number,
+    discountPrice: number,
     categoryId: number,
+    subcategoryId: number,
     active: boolean,
     image: string,
     createdAt: Date,
@@ -26,7 +28,9 @@ export class Product {
     this.name = name;
     this.description = description;
     this.price = price;
+    this.discountPrice = discountPrice;
     this.categoryId = categoryId;
+    this.subcategoryId = subcategoryId;
     this.active = active;
     this.image = image;
     this.createdAt = createdAt;
