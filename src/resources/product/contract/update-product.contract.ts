@@ -4,6 +4,8 @@ export abstract class UpdateProductRepositoryContract {
   abstract updateProduct(input: {
     id: number;
     name?: string;
+    sku?: string;
+    barcode?: string;
     image?: string;
     description?: string;
     price?: number;

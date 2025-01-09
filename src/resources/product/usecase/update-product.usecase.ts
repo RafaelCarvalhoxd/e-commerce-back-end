@@ -4,6 +4,8 @@ export abstract class UpdateProductUseCase {
   abstract updateProduct(input: {
     id: number;
     name?: string;
+    sku?: string;
+    barcode?: string;
     image?: string;
     description?: string;
     price?: number;
