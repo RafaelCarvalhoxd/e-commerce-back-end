@@ -21,6 +21,7 @@ import configuration from 'src/infra/config/configuration';
         autoLoadEntities: true,
         synchronize: false,
         logging: true,
+        migrations: ['migrations/*.ts'],
       }),
       inject: [ConfigService],
     }),
