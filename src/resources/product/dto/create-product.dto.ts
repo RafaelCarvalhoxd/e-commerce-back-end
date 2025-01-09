@@ -60,7 +60,7 @@ export class CreateProductDto {
 
   @ApiProperty({
     description: 'The price of the product',
-    example: 199.99,
+    example: '199.99',
   })
   @IsNotEmpty()
   @IsDecimal({ decimal_digits: '0,2' })
@@ -77,7 +77,7 @@ export class CreateProductDto {
 
   @ApiProperty({
     description: 'The discount price of the product, if applicable',
-    example: 149.99,
+    example: '149.99',
     required: false,
   })
   @IsOptional()
