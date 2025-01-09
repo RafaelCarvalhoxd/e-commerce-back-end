@@ -17,6 +17,8 @@ export class UpdateProductService implements UpdateProductUseCase {
 
   async updateProduct(input: {
     id: number;
+    sku?: string;
+    barcode?: string;
     name?: string;
     image?: string;
     description?: string;
@@ -44,6 +46,8 @@ export class UpdateProductService implements UpdateProductUseCase {
       id: input.id,
       name: input.name,
       image: input.image,
+      sku: input.sku,
+      barcode: input.barcode,
       description: input.description,
       price: input.price,
       subcategoryId: input.subcategoryId,

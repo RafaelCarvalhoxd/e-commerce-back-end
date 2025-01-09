@@ -14,6 +14,8 @@ export class CreateProductService implements CreateProductUseCase {
   async createProduct(input: {
     name: string;
     image?: string;
+    sku: string;
+    barcode: string;
     description?: string;
     price: number;
     subcategoryId?: number;
@@ -34,6 +36,8 @@ export class CreateProductService implements CreateProductUseCase {
     const product = await this.createProductRepository.createProduct({
       name: input.name,
       image: input.image,
+      sku: input.sku,
+      barcode: input.barcode,
       description: input.description,
       price: input.price,
       subcategoryId: input.subcategoryId,
