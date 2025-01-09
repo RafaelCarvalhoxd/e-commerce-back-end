@@ -17,6 +17,12 @@ export class ProductModel {
   @Column({ name: 'name', type: 'varchar', length: 255 })
   name: string;
 
+  @Column({ name: 'sku', type: 'varchar', length: 255 })
+  sku: string;
+
+  @Column({ name: 'barcode', type: 'varchar', length: 255 })
+  barcode: string;
+
   @Column({ nullable: true, name: 'description', type: 'text' })
   description?: string;
 
