@@ -5,6 +5,7 @@ import { DeleteProductRepositoryContract } from 'src/resources/product/contract/
 import { FindProductRepositoryContract } from 'src/resources/product/contract/find-product.contract';
 import { ListProductRepositoryContract } from 'src/resources/product/contract/list-product.contract';
 import { UpdateProductRepositoryContract } from 'src/resources/product/contract/update-product.contract';
+import { ProductController } from 'src/resources/product/controller/create-produict.controller';
 import { ProductModel } from 'src/resources/product/model/product.model';
 import { CreateProductRepository } from 'src/resources/product/repository/create-product.repository';
 import { DeleteProductRepository } from 'src/resources/product/repository/delete-product.repository';
@@ -67,6 +68,7 @@ const resources: Provider[] = [
 
 @Module({
   imports: [TypeOrmModule.forFeature([ProductModel])],
+  controllers: [ProductController],
   providers: [...resources],
   exports: [...resources],
 })
