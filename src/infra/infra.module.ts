@@ -19,7 +19,7 @@ import configuration from 'src/infra/config/configuration';
         password: configService.get('database.password'),
         database: configService.get('database.database'),
         autoLoadEntities: true,
-        synchronize: false,
+        synchronize: true,
         logging: true,
       }),
       inject: [ConfigService],
