@@ -32,7 +32,9 @@ export class CreateProductRepository
       barcode: input.barcode,
       description: input.description,
       price: input.price,
-      subcategoryId: input.subcategoryId,
+      subcategory: {
+        id: input.subcategoryId,
+      },
       discountPrice: input.discountPrice,
       active: input.active,
     });

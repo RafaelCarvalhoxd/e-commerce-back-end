@@ -19,12 +19,11 @@ export class SubCategoryModel {
 
   @ManyToOne(() => CategoryModel, (category) => category.id)
   @JoinColumn({ name: 'category_id' })
-  categoryId: number;
+  category: CategoryModel;
 
   @CreateDateColumn({
     name: 'created_at',
     type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 

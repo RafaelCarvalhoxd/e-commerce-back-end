@@ -34,7 +34,7 @@ export class ProductModel {
 
   @ManyToOne(() => SubCategoryModel, (subcategory) => subcategory.id)
   @JoinColumn({ name: 'subcategory_id' })
-  subcategoryId?: number;
+  subcategory?: SubCategoryModel;
 
   @Column({ name: 'active', type: 'boolean' })
   active: boolean;
@@ -45,7 +45,6 @@ export class ProductModel {
   @CreateDateColumn({
     name: 'created_at',
     type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 

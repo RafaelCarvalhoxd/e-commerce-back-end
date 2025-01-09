@@ -33,7 +33,9 @@ export class UpdateProductRepository
       image: input.image,
       description: input.description,
       price: input.price,
-      subcategoryId: input.subcategoryId,
+      subcategory: {
+        id: input.subcategoryId,
+      },
       discountPrice: input.discountPrice,
       active: input.active,
     });
