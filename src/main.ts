@@ -20,14 +20,13 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/ecommerce');
 
-  const swaggerConfig = new DocumentBuilder()
+  const documentBuilder = new DocumentBuilder()
     .setTitle(name)
     .setDescription(description)
     .setVersion(version)
     .build();
 
-  const documentFactory = () =>
-    SwaggerModule.createDocument(app, swaggerConfig);
+  const documentFactory = SwaggerModule.createDocument(app, documentBuilder);
 
   SwaggerModule.setup('docs', app, documentFactory, {
     useGlobalPrefix: true,
@@ -35,7 +34,9 @@ async function bootstrap() {
 
   await app.listen(port, async () => {
     logger.log(`Server is running on http://localhost:${port}`);
-    logger.log(`Swagger is running on http://localhost:${port}/docs`);
+    logger.log(
+      `Swagger is running on http://localhost:${port}/api/ecommerce/docs`,
+    );
   });
 }
 bootstrap();
