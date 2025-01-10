@@ -1,5 +1,5 @@
 import { Category } from 'src/resources/category/entity/category.entity';
 
-export abstract class ListCategoryContractRepository {
+export abstract class ListCategoryRepositoryContract {
   abstract listCategory(input: { name: string }): Promise<Category[]>;
 }
