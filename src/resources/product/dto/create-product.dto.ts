@@ -64,7 +64,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsDecimal({ decimal_digits: '0,2' })
-  price: number;
+  price: string;
 
   @ApiProperty({
     description: 'The ID of the subcategory the product belongs to',
@@ -82,7 +82,7 @@ export class CreateProductDto {
   })
   @IsOptional()
   @IsDecimal({ decimal_digits: '0,2' })
-  discountPrice?: number;
+  discountPrice?: string;
 
   @ApiProperty({
     description: 'Whether the product is active',

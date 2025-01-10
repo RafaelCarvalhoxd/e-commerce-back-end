@@ -5,8 +5,8 @@ export class Product {
   name: string;
   sku: string;
   description?: string;
-  price: number;
-  discountPrice?: number;
+  price: string;
+  discountPrice?: string;
   subcategory?: SubCategory;
   active: boolean;
   image?: string;
@@ -19,8 +19,8 @@ export class Product {
     name: string,
     sku: string,
     description: string,
-    price: number,
-    discountPrice: number,
+    price: string,
+    discountPrice: string,
     subcategory: SubCategory,
     active: boolean,
     image: string,

@@ -17,9 +17,9 @@ export class CreateProductService implements CreateProductUseCase {
     sku: string;
     barcode: string;
     description?: string;
-    price: number;
+    price: string;
     subcategoryId?: number;
-    discountPrice?: number;
+    discountPrice?: string;
     active: boolean;
   }): Promise<Product> {
     const existingProduct = await this.findProductRepository.findProduct({
@@ -31,7 +31,7 @@ export class CreateProductService implements CreateProductUseCase {
       throw new ConflictException(
         'Discount price must be less than the price!',
       );
-    if (input.price < 1)
+    if (parseFloat(input.price) < 1)
       throw new ConflictException('Price must be greater than 1!');
     const product = await this.createProductRepository.createProduct({
       name: input.name,

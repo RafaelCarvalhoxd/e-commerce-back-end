@@ -22,9 +22,9 @@ export class UpdateProductService implements UpdateProductUseCase {
     name?: string;
     image?: string;
     description?: string;
-    price?: number;
+    price?: string;
     subcategoryId?: number;
-    discountPrice?: number;
+    discountPrice?: string;
     active: boolean;
   }): Promise<Product> {
     const [existingProduct, product] = await Promise.all([
@@ -38,7 +38,7 @@ export class UpdateProductService implements UpdateProductUseCase {
       throw new ConflictException(
         'Discount price must be less than the price!',
       );
-    if (input.price < 1)
+    if (parseFloat(input.price) < 1)
       throw new ConflictException('Price must be greater than 1!');
     const updatedProduct = await this.updateProductRepository.updateProduct({
       id: input.id,

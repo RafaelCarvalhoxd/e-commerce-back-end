@@ -20,9 +20,9 @@ export class CreateProductRepository
     sku: string;
     barcode: string;
     description?: string;
-    price: number;
+    price: string;
     subcategoryId?: number;
-    discountPrice?: number;
+    discountPrice?: string;
     active: boolean;
   }): Promise<Product> {
     const product = this.repository.create({

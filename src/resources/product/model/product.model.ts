@@ -27,10 +27,10 @@ export class ProductModel {
   description?: string;
 
   @Column({ name: 'price', type: 'decimal' })
-  price: number;
+  price: string;
 
   @Column({ nullable: true, name: 'discount_price', type: 'decimal' })
-  discountPrice?: number;
+  discountPrice?: string;
 
   @ManyToOne(() => SubCategoryModel, (subcategory) => subcategory.id)
   @JoinColumn({ name: 'subcategory_id' })

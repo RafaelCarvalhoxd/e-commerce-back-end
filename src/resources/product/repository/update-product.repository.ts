@@ -21,9 +21,9 @@ export class UpdateProductRepository
     barcode?: string;
     image?: string;
     description?: string;
-    price?: number;
+    price?: string;
     subcategoryId?: number;
-    discountPrice?: number;
+    discountPrice?: string;
     active: boolean;
   }): Promise<Product> {
     await this.repository.update(input.id, {
