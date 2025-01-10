@@ -4,7 +4,7 @@ import { Category } from 'src/resources/category/entity/category.entity';
 import { ListCategoryUseCase } from 'src/resources/category/usecase/list-category.usecase';
 
 @ApiTags('Category')
-@Controller('Category')
+@Controller('category')
 export class ListCategoryController {
   constructor(private readonly useCase: ListCategoryUseCase) {}
 
