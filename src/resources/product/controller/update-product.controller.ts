@@ -10,7 +10,7 @@ export class UpdateProductController {
   constructor(private readonly useCase: UpdateProductUseCase) {}
 
   @Patch()
-  async UpdateProduct(
+  async updateProduct(
     @Param('id') id: number,
     @Body() input: UpdateProductDto,
   ): Promise<Product> {
