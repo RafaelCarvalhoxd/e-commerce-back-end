@@ -32,7 +32,7 @@ export class UpdateProductService implements UpdateProductUseCase {
       this.findProductRepository.findProduct({ id: input.id }),
     ]);
     if (!product) throw new NotFoundException('Product not found!');
-    if (existingProduct)
+    if (existingProduct && existingProduct.id !== input.id)
       throw new ConflictException('Product name already exists!');
     if (input.discountPrice && input.discountPrice >= input.price)
       throw new ConflictException(
