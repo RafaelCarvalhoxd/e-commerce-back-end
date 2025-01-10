@@ -5,7 +5,11 @@ export abstract class ListProductRepositoryContract {
     name?: string;
     minPrice?: number;
     maxPrice?: number;
-    categoryId?: number;
-    subcategoryId?: number;
-  }): Promise<Product[]>;
+    categoryId?: number[];
+    subcategoryId?: number[];
+    page?: number;
+    limit?: number;
+    orderBy?: 'price' | 'name';
+    orderDirection?: 'ASC' | 'DESC';
+  }): Promise<[Product[], number]>;
 }
