@@ -8,7 +8,7 @@ import { FindProductUseCase } from 'src/resources/product/usecase/find-product.u
 export class FindProductController {
   constructor(private readonly useCase: FindProductUseCase) {}
 
-  @Get()
+  @Get(':id')
   async findProduct(@Param('id') id: number): Promise<Product> {
     return this.useCase.findProduct({
       id: id,
