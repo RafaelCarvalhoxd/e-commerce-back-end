@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ListProductUseCase } from 'src/resources/product/usecase/list-product.usecase';
-import { Pagination } from 'src/common/pagination/pagination.common';
+import { Pagination } from 'src/common/utils/pagination/pagination.util';
 import { Product } from 'src/resources/product/entity/product.entity';
 import { ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationPagePipe } from 'src/common/pipes/pagination-page.pipe';

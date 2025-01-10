@@ -1,4 +1,4 @@
-import { Pagination } from 'src/common/pagination/pagination.common';
+import { Pagination } from 'src/common/utils/pagination/pagination.util';
 import { Product } from 'src/resources/product/entity/product.entity';
 
 export abstract class ListProductUseCase {
