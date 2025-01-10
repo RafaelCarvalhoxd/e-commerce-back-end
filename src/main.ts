@@ -9,6 +9,8 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api/e-commerce');
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -17,8 +19,6 @@ async function bootstrap() {
   );
 
   const port = parseInt(process.env.PORT, 10) || 3000;
-
-  app.setGlobalPrefix('api/ecommerce');
 
   const documentBuilder = new DocumentBuilder()
     .setTitle(name)
@@ -35,7 +35,7 @@ async function bootstrap() {
   await app.listen(port, async () => {
     logger.log(`Server is running on http://localhost:${port}`);
     logger.log(
-      `Swagger is running on http://localhost:${port}/api/ecommerce/docs`,
+      `Swagger is running on http://localhost:${port}/api/e-commerce/docs`,
     );
   });
 }
