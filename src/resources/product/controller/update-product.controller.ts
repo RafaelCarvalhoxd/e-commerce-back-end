@@ -9,7 +9,7 @@ import { UpdateProductUseCase } from 'src/resources/product/usecase/update-produ
 export class UpdateProductController {
   constructor(private readonly useCase: UpdateProductUseCase) {}
 
-  @Patch()
+  @Patch(':id')
   async updateProduct(
     @Param('id') id: number,
     @Body() input: UpdateProductDto,
