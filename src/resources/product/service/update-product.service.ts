@@ -27,12 +27,10 @@ export class UpdateProductService implements UpdateProductUseCase {
     discountPrice?: number;
     active: boolean;
   }): Promise<Product> {
-    const existingProduct = await this.findProductRepository.findProduct({
-      name: input.name,
-    });
-    const product = await this.findProductRepository.findProduct({
-      id: input.id,
-    });
+    const [existingProduct, product] = await Promise.all([
+      this.findProductRepository.findProduct({ name: input.name }),
+      this.findProductRepository.findProduct({ id: input.id }),
+    ]);
     if (!product) throw new NotFoundException('Product not found!');
     if (existingProduct)
       throw new ConflictException('Product name already exists!');
