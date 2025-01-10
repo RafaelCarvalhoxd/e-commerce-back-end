@@ -18,6 +18,11 @@ export class FindProductRepository implements FindProductRepositoryContract {
       where: {
         ...whereCondition,
       },
+      relations: {
+        subcategory: {
+          category: true,
+        },
+      },
     });
 
     return product;
