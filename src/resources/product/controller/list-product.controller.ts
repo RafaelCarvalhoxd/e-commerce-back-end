@@ -9,7 +9,7 @@ import { PaginationLimitPipe } from 'src/common/pipes/pagination-limit.pipe';
 @ApiTags('Product')
 @Controller('product')
 export class ListProductController {
-  constructor(private readonly listProductUseCase: ListProductUseCase) {}
+  constructor(private readonly useCase: ListProductUseCase) {}
 
   @Get()
   @ApiQuery({
@@ -73,7 +73,7 @@ export class ListProductController {
     @Query('orderBy') orderBy: 'price' | 'name',
     @Query('orderDirection') orderDirection: 'ASC' | 'DESC',
   ): Promise<Pagination<Product>> {
-    return this.listProductUseCase.listProduct({
+    return this.useCase.listProduct({
       name: name,
       categoryId: categoryId,
       limit: limit,
