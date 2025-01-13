@@ -42,14 +42,14 @@ export class UpdateProductService implements UpdateProductUseCase {
       throw new ConflictException('Price must be greater than 1!');
     const updatedProduct = await this.updateProductRepository.updateProduct({
       id: input.id,
-      name: input.name,
-      image: input.image,
-      sku: input.sku,
-      barcode: input.barcode,
-      description: input.description,
-      price: input.price,
-      subcategoryId: input.subcategoryId,
-      discountPrice: input.discountPrice,
+      name: input.name ?? product.name,
+      image: input.image ?? product.image,
+      sku: input.sku ?? product.sku,
+      barcode: input.barcode ?? product.barcode,
+      description: input.description ?? product.description,
+      price: input.price ?? product.price,
+      subcategoryId: input.subcategoryId ?? product.subcategory.id,
+      discountPrice: input.discountPrice ?? product.discountPrice,
       active: input.active,
     });
     return updatedProduct;
