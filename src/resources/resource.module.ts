@@ -5,5 +5,6 @@ import { SubCategoryModule } from 'src/resources/subcategory/subcategory.module'
 
 @Module({
   imports: [ProductModule, SubCategoryModule, CategoryModule],
+  exports: [ProductModule, SubCategoryModule, CategoryModule],
 })
 export class ResourceModule {}
