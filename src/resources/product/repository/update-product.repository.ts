@@ -44,6 +44,11 @@ export class UpdateProductRepository
       where: {
         id: input.id,
       },
+      relations: {
+        subcategory: {
+          category: true,
+        },
+      },
     });
 
     return updatedProduct;
