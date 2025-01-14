@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ListSubCategoryRepositoryContract } from 'src/resources/subcategory/contract/list-subcategory.contract';
 import { SubCategory } from 'src/resources/subcategory/entity/subcategory.entity';
+import { SubCategoryModel } from 'src/resources/subcategory/model/subcategory.model';
 import { DataSource } from 'typeorm';
 
 @Injectable()
@@ -15,33 +16,25 @@ export class ListSubCategoryRepository
     categoryIds: number[];
   }): Promise<SubCategory[]> {
     const subcategories = this.ds
-      .getRepository(SubCategory)
+      .getRepository(SubCategoryModel)
       .createQueryBuilder('s')
       .leftJoinAndSelect('s.category', 'c');
 
-    const filters = [
-      {
-        condition: input.ids,
-        query: 's.id IN (:...ids)',
-        params: { ids: input.ids },
-      },
-      {
-        condition: input.name,
-        query: 's.name IN (:...name)',
-        params: { name: input.name },
-      },
-      {
-        condition: input.categoryIds,
-        query: 'c.id IN (:...categoryIds)',
-        params: { categoryIds: input.categoryIds },
-      },
-    ];
+    if (input.ids && input.ids.length > 0) {
+      subcategories.andWhere('s.id IN (:...ids)', { ids: input.ids });
+    }
 
-    filters.forEach(({ condition, query, params }) => {
-      if (condition) {
-        subcategories.andWhere(query, params);
-      }
-    });
+    if (input.name && input.name.length > 0) {
+      subcategories.andWhere(`s.name LIKE ANY (ARRAY[:...name])`, {
+        name: input.name.map((n) => `%${n}%`),
+      });
+    }
+
+    if (input.categoryIds && input.categoryIds.length > 0) {
+      subcategories.andWhere('c.id IN (:...categoryIds)', {
+        categoryIds: input.categoryIds,
+      });
+    }
 
     return subcategories.getMany();
   }
