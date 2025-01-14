@@ -5,4 +5,5 @@ export class ToArrayStringPipe implements PipeTransform {
   transform(value?: string) {
     return value?.split(',').map((v) => v.trim());
   }
+  //
 }
