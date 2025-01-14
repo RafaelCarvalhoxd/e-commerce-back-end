@@ -5,6 +5,7 @@ import { Product } from 'src/resources/product/entity/product.entity';
 import { ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationPagePipe } from 'src/common/pipes/pagination-page.pipe';
 import { PaginationLimitPipe } from 'src/common/pipes/pagination-limit.pipe';
+import { ToArrayNumberPipe } from 'src/common/pipes/to-array-number.pipe';
 
 @ApiTags('Product')
 @Controller('product')
@@ -66,8 +67,8 @@ export class ListProductController {
     @Query('name') name: string,
     @Query('minPrice') minPrice: number,
     @Query('maxPrice') maxPrice: number,
-    @Query('categoryId') categoryId: number[],
-    @Query('subcategoryId') subcategoryId: number[],
+    @Query('categoryId', ToArrayNumberPipe) categoryId: number[],
+    @Query('subcategoryId', ToArrayNumberPipe) subcategoryId: number[],
     @Query('page', PaginationPagePipe) page: number,
     @Query('limit', PaginationLimitPipe) limit: number,
     @Query('orderBy') orderBy: 'price' | 'name',
