@@ -8,7 +8,7 @@ export class DeleteSubCategoryController {
   constructor(private readonly useCase: DeleteSubCategoryUseCase) {}
 
   @Delete(':id')
-  async deleteCategory(@Param('id') id: number): Promise<void> {
+  async deleteSubCategory(@Param('id') id: number): Promise<void> {
     await this.useCase.deleteSubCategory({ id });
   }
 }

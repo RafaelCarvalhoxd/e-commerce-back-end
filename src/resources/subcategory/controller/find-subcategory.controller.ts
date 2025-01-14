@@ -9,7 +9,7 @@ export class FindSubCategoryController {
   constructor(private readonly useCase: FindSubCategoryUseCase) {}
 
   @Get(':id')
-  async findCategory(@Param('id') id: number): Promise<SubCategory> {
+  async findSubCategory(@Param('id') id: number): Promise<SubCategory> {
     return this.useCase.findSubCategory({
       id: id,
     });
