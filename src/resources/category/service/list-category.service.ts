@@ -9,7 +9,7 @@ export class ListCategoryService implements ListCategoryUseCase {
     private readonly listCategoryRepository: ListCategoryRepositoryContract,
   ) {}
 
-  async listCategory(input: { name: string }): Promise<Category[]> {
+  async listCategory(input: { name?: string }): Promise<Category[]> {
     const categories = await this.listCategoryRepository.listCategory({
       name: input.name,
     });
