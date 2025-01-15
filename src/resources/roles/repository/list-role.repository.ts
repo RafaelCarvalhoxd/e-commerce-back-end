@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ListRoleRepositoryContract } from 'src/resources/roles/contract/list-role.contract';
 import { Role } from 'src/resources/roles/entity/role.entity';
 import { RoleModel } from 'src/resources/roles/model/role.model';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 
 @Injectable()
 export class ListRoleRepository implements ListRoleRepositoryContract {
@@ -14,7 +14,7 @@ export class ListRoleRepository implements ListRoleRepositoryContract {
 
   async listRole(input: { name?: string }): Promise<Role[]> {
     const roles = await this.repository.find({
-      where: input.name ? { name: input.name } : {},
+      where: input.name ? { name: Like(`%${input.name}%`) } : {},
     });
 
     return roles;
