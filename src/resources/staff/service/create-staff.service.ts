@@ -22,6 +22,7 @@ export class CreateStaffService implements CreateStaffUseCase {
   async createStaff(input: {
     name: string;
     email: string;
+    cpf: string;
     password: string;
     passwordConfirmation: string;
     image: string;
@@ -44,6 +45,7 @@ export class CreateStaffService implements CreateStaffUseCase {
     return this.createStaffRepository.createStaff({
       name: input.name,
       email: input.email,
+      cpf: input.cpf,
       password: hashedPassword,
       image: input.image,
       active: input.active,

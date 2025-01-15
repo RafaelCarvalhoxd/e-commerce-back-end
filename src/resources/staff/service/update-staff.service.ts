@@ -23,6 +23,7 @@ export class UpdateStaffService implements UpdateStaffUseCase {
     id: number;
     name?: string;
     email?: string;
+    cpf?: string;
     password?: string;
     passwordConfirmation?: string;
     image?: string;
@@ -51,6 +52,7 @@ export class UpdateStaffService implements UpdateStaffUseCase {
       id: input.id,
       name: input.name ?? existingStaff.name,
       email: input.email ?? existingStaff.email,
+      cpf: input.cpf ?? existingStaff.cpf,
       password: hashedPassword ?? existingStaff.password,
       image: input.image ?? existingStaff.image,
       active: input.active ?? existingStaff.active,

@@ -18,6 +18,7 @@ export class UpdateStaffController {
       id,
       name: input.name,
       email: input.email,
+      cpf: input.cpf,
       password: input.password,
       passwordConfirmation: input.passwordConfirmation,
       image: input.image,

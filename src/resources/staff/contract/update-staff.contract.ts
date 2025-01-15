@@ -4,6 +4,7 @@ export abstract class UpdateStaffRepositoryContract {
   abstract updateStaff(input: {
     id: number;
     name?: string;
+    cpf?: string;
     email?: string;
     password?: string;
     image?: string;

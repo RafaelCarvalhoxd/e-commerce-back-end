@@ -22,6 +22,15 @@ export class CreateStaffDto {
 
   @ApiProperty({
     type: String,
+    description: 'CPF of the staff',
+    required: true,
+  })
+  @IsString()
+  @IsNotEmpty()
+  cpf: string;
+
+  @ApiProperty({
+    type: String,
     description: 'Password of the staff',
     required: true,
   })

@@ -19,6 +19,9 @@ export class StaffModel {
   @Column({ type: 'varchar', name: 'email' })
   email: string;
 
+  @Column({ type: 'varchar', name: 'cpf' })
+  cpf: string;
+
   @Column({ type: 'varchar', name: 'password' })
   password: string;
 

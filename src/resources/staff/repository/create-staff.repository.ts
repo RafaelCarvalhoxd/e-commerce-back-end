@@ -15,6 +15,7 @@ export class CreateStaffRepository implements CreateStaffRepositoryContract {
   async createStaff(input: {
     name: string;
     email: string;
+    cpf: string;
     password: string;
     image: string;
     active: boolean;
@@ -24,6 +25,7 @@ export class CreateStaffRepository implements CreateStaffRepositoryContract {
     const staff = this.repository.create({
       name: input.name,
       email: input.email,
+      cpf: input.cpf,
       password: input.password,
       image: input.image,
       active: input.active,

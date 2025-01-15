@@ -4,6 +4,7 @@ export abstract class UpdateStaffUseCase {
   abstract updateStaff(input: {
     id: number;
     name?: string;
+    cpf?: string;
     email?: string;
     password?: string;
     passwordConfirmation?: string;

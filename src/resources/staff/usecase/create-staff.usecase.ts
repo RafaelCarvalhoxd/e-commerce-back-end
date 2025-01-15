@@ -4,6 +4,7 @@ export abstract class CreateStaffUseCase {
   abstract createStaff(input: {
     name: string;
     email: string;
+    cpf: string;
     password: string;
     passwordConfirmation: string;
     image: string;

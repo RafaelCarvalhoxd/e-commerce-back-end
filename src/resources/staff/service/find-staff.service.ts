@@ -9,10 +9,15 @@ export class FindStaffService implements FindStaffUseCase {
     private readonly findStaffRepository: FindStaffRepositoryContract,
   ) {}
 
-  async findStaff(input: { id?: number; email?: string }): Promise<Staff> {
+  async findStaff(input: {
+    id?: number;
+    email?: string;
+    cpf?: string;
+  }): Promise<Staff> {
     const staff = await this.findStaffRepository.findStaff({
       id: input.id,
       email: input.email,
+      cpf: input.cpf,
     });
     if (!staff) throw new NotFoundException('Staff not found');
     return staff;

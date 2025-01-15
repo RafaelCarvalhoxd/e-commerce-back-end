@@ -12,10 +12,16 @@ export class FindStaffRepository implements FindStaffRepositoryContract {
     private readonly repository: Repository<StaffModel>,
   ) {}
 
-  async findStaff(input: { id?: number; email?: string }): Promise<Staff> {
+  async findStaff(input: {
+    id?: number;
+    email?: string;
+    cpf?: string;
+  }): Promise<Staff> {
     const whereCondition = input.email
       ? { email: input.email }
-      : { id: input.id };
+      : input.cpf
+        ? { cpf: input.cpf }
+        : { id: input.id };
     const staff = await this.repository.findOne({
       where: whereCondition,
       relations: {

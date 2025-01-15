@@ -16,6 +16,7 @@ export class UpdateStaffRepository implements UpdateStaffRepositoryContract {
     id: number;
     name?: string;
     email?: string;
+    cpf?: string;
     password?: string;
     image?: string;
     active?: boolean;
@@ -27,6 +28,7 @@ export class UpdateStaffRepository implements UpdateStaffRepositoryContract {
       {
         name: input.name,
         email: input.email,
+        cpf: input.cpf,
         password: input.password,
         image: input.image,
         active: input.active,

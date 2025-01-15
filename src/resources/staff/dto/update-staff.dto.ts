@@ -28,6 +28,15 @@ export class UpdateStaffDto {
 
   @ApiProperty({
     type: String,
+    description: 'CPF of the staff',
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  cpf?: string;
+
+  @ApiProperty({
+    type: String,
     description: 'Password of the staff',
     required: false,
   })

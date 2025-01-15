@@ -4,6 +4,7 @@ export abstract class CreateStaffRepositoryContract {
   abstract createStaff(input: {
     name: string;
     email: string;
+    cpf: string;
     password: string;
     image: string;
     active: boolean;

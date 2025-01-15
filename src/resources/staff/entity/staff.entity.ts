@@ -4,6 +4,7 @@ export class Staff {
   id: number;
   name: string;
   email: string;
+  cpf: string;
   password: string;
   image: string;
   active: boolean;
@@ -16,6 +17,7 @@ export class Staff {
     id: number,
     name: string,
     email: string,
+    cpf: string,
     password: string,
     image: string,
     active: boolean,
@@ -27,6 +29,7 @@ export class Staff {
     this.id = id;
     this.name = name;
     this.email = email;
+    this.cpf = cpf;
     this.password = password;
     this.image = image;
     this.active = active;
