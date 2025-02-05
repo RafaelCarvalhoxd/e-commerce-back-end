@@ -1,7 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { User } from 'src/resources/user/entity/user.entity';
 import { FindUserUseCase } from 'src/resources/user/usecase/find-user.usecase';
 
+@ApiTags('User')
 @Controller('user')
 export class FindUserController {
   constructor(private readonly usecase: FindUserUseCase) {}
