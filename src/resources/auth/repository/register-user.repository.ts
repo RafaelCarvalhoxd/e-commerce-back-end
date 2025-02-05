@@ -28,16 +28,13 @@ export class RegisterUserRepository implements RegisterUserRepositoryContract {
         gender: input.gender,
         birthdate: input.birthdate,
       });
-
       const savedUser = await manager.getRepository(User).save(user);
 
       const userRole = manager.getRepository(UserRole).create({
         roleId: input.roleId,
         userId: savedUser.id,
       });
-
       await manager.getRepository(UserRole).save(userRole);
-
       return savedUser;
     });
   }
