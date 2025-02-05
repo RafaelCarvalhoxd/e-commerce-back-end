@@ -24,10 +24,15 @@ export class FindUserRepository implements FindUserRepositoryContract {
         : { id: input.id };
     const user = await this.repository.findOne({
       relations: {
-        roles: true,
+        roles: {
+          role: true,
+        },
       },
       where: whereConditions,
     });
-    return user;
+    return {
+      ...user,
+      roles: user?.roles.map((role) => role.role),
+    };
   }
 }

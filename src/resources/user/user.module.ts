@@ -2,6 +2,7 @@ import { Module, Provider } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FindUserRepositoryContract } from 'src/resources/user/contract/find-user.contract';
 import { FindUserController } from 'src/resources/user/controller/find-user.controller';
+import { UserRole } from 'src/resources/user/model/user-roles.model';
 import { UserModel } from 'src/resources/user/model/user.model';
 import { FindUserRepository } from 'src/resources/user/repository/find-user.repository';
 import { FindUserService } from 'src/resources/user/service/find-user.service';
@@ -19,7 +20,7 @@ const resources: Provider[] = [
 ];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserModel])],
+  imports: [TypeOrmModule.forFeature([UserModel, UserRole])],
   controllers: [FindUserController],
   providers: [...resources],
   exports: [...resources],

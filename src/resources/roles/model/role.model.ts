@@ -1,12 +1,9 @@
-import { UserModel } from 'src/resources/user/model/user.model';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 
 @Entity('role')
@@ -22,8 +19,4 @@ export class RoleModel {
 
   @UpdateDateColumn({ type: 'timestamp', name: 'updated_at' })
   updatedAt?: Date;
-
-  @ManyToOne(() => UserModel, (user) => user.roles)
-  @JoinColumn({ name: 'user_id' })
-  user: UserModel;
 }

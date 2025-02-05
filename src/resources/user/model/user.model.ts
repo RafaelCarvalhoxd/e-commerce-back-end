@@ -1,4 +1,4 @@
-import { RoleModel } from 'src/resources/roles/model/role.model';
+import { UserRole } from 'src/resources/user/model/user-roles.model';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -40,6 +40,6 @@ export class UserModel {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt: Date;
 
-  @OneToMany(() => RoleModel, (role) => role.user)
-  roles: RoleModel[];
+  @OneToMany(() => UserRole, (userRole) => userRole.user)
+  roles: UserRole[];
 }
