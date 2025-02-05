@@ -5,5 +5,6 @@ export abstract class FindUserRepositoryContract {
     id?: number;
     email?: string;
     cpf?: string;
+    phone?: string;
   }): Promise<User>;
 }

@@ -5,5 +5,6 @@ export abstract class FindUserUseCase {
     id?: number;
     email?: string;
     cpf?: string;
+    phone?: string;
   }): Promise<User>;
 }

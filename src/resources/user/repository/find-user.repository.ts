@@ -16,12 +16,15 @@ export class FindUserRepository implements FindUserRepositoryContract {
     id?: number;
     email?: string;
     cpf?: string;
+    phone?: string;
   }): Promise<User> {
     const whereConditions = input.email
       ? { email: input.email }
       : input.cpf
         ? { cpf: input.cpf }
-        : { id: input.id };
+        : input.phone
+          ? { phone: input.phone }
+          : { id: input.id };
     const user = await this.repository.findOne({
       relations: {
         roles: {

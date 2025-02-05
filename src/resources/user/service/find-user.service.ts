@@ -13,11 +13,13 @@ export class FindUserService implements FindUserUseCase {
     id?: number;
     email?: string;
     cpf?: string;
+    phone?: string;
   }): Promise<User> {
     const user = await this.findUserRepository.findUser({
       id: input.id,
       email: input.email,
       cpf: input.cpf,
+      phone: input.phone,
     });
     if (!user) throw new NotFoundException('User not found');
     return user;
