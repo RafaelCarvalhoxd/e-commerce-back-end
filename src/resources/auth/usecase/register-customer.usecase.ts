@@ -6,6 +6,7 @@ export abstract class RegisterCustomerUsecase {
     email: string;
     password: string;
     confirmPassword: string;
+    birthdate: Date;
     phone: string;
     gender: 'M' | 'F';
     cpf: string;
