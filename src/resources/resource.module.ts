@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from 'src/resources/auth/auth.module';
 import { BcryptModule } from 'src/resources/bcrypt/bcrypt.module';
 import { CategoryModule } from 'src/resources/category/category.module';
 import { JwtServiceModule } from 'src/resources/jwt/jwt.module';
@@ -16,6 +17,7 @@ import { UserModule } from 'src/resources/user/user.module';
     RoleModule,
     JwtServiceModule,
     UserModule,
+    AuthModule,
   ],
   exports: [
     ProductModule,
@@ -25,6 +27,7 @@ import { UserModule } from 'src/resources/user/user.module';
     RoleModule,
     JwtServiceModule,
     UserModule,
+    AuthModule,
   ],
 })
 export class ResourceModule {}
