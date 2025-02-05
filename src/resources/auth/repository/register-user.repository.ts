@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RegisterUserRepositoryContract } from 'src/resources/auth/contract/register-user.contract';
 import { User } from 'src/resources/user/entity/user.entity';
 import { UserRole } from 'src/resources/user/model/user-roles.model';
+import { UserModel } from 'src/resources/user/model/user.model';
 import { DataSource } from 'typeorm';
 
 @Injectable()
@@ -19,7 +20,7 @@ export class RegisterUserRepository implements RegisterUserRepositoryContract {
     roleId: number;
   }): Promise<User> {
     return await this.ds.transaction(async (manager) => {
-      const user = manager.getRepository(User).create({
+      const user = manager.getRepository(UserModel).create({
         name: input.name,
         email: input.email,
         password: input.password,
@@ -28,14 +29,24 @@ export class RegisterUserRepository implements RegisterUserRepositoryContract {
         gender: input.gender,
         birthdate: input.birthdate,
       });
-      const savedUser = await manager.getRepository(User).save(user);
+      const savedUser = await manager.getRepository(UserModel).save(user);
 
       const userRole = manager.getRepository(UserRole).create({
         roleId: input.roleId,
         userId: savedUser.id,
       });
       await manager.getRepository(UserRole).save(userRole);
-      return savedUser;
+
+      const newUser = await manager.getRepository(UserModel).findOne({
+        where: { id: savedUser.id },
+        relations: {
+          roles: {
+            role: true,
+          },
+        },
+      });
+
+      return UserModel.toEntity(newUser);
     });
   }
 }
