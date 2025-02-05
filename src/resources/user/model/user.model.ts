@@ -1,3 +1,4 @@
+import { User } from 'src/resources/user/entity/user.entity';
 import { UserRole } from 'src/resources/user/model/user-roles.model';
 import {
   Entity,
@@ -42,4 +43,27 @@ export class UserModel {
 
   @OneToMany(() => UserRole, (userRole) => userRole.user)
   roles: UserRole[];
+
+  static toEntity(userModel: UserModel): User {
+    if (!userModel) return null;
+    return {
+      id: userModel.id,
+      email: userModel.email,
+      cpf: userModel.cpf,
+      phone: userModel.phone,
+      name: userModel.name,
+      gender: userModel.gender,
+      birthdate: userModel.birthdate,
+      password: userModel.password,
+      createdAt: userModel.createdAt,
+      updatedAt: userModel.updatedAt,
+      roles:
+        userModel.roles?.map((userRole) => ({
+          id: userRole.role.id,
+          name: userRole.role.name,
+          createdAt: userRole.role.createdAt,
+          updatedAt: userRole.role.updatedAt,
+        })) || [],
+    };
+  }
 }

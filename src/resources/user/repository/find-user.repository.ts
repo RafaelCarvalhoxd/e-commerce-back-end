@@ -33,9 +33,6 @@ export class FindUserRepository implements FindUserRepositoryContract {
       },
       where: whereConditions,
     });
-    return {
-      ...user,
-      roles: user?.roles.map((role) => role.role),
-    };
+    return UserModel?.toEntity(user);
   }
 }
