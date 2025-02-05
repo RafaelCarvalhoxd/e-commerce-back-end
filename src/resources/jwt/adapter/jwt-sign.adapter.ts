@@ -6,8 +6,8 @@ import { JwtSignContract } from 'src/resources/jwt/contract/jwt-sign.contract';
 export class JwtSignAdapter implements JwtSignContract {
   constructor(private readonly jwtService: JwtService) {}
 
-  async sign(payload: object): Promise<{ token: string }> {
+  async sign(payload: object): Promise<string> {
     const token = this.jwtService.sign(payload);
-    return { token };
+    return token;
   }
 }
