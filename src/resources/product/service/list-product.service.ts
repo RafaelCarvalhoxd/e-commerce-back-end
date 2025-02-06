@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Pagination } from 'src/common/utils/pagination/pagination.util';
+import { Pagination } from 'src/common/utils/pagination.util';
 import { ListProductRepositoryContract } from 'src/resources/product/contract/list-product.contract';
 import { Product } from 'src/resources/product/entity/product.entity';
 import { ListProductUseCase } from 'src/resources/product/usecase/list-product.usecase';
