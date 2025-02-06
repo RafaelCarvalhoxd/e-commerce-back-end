@@ -1,14 +1,17 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/common/guard/auth.guard';
 import { CreateProductDto } from 'src/resources/product/dto/create-product.dto';
 import { Product } from 'src/resources/product/entity/product.entity';
 import { CreateProductUseCase } from 'src/resources/product/usecase/create-product.usecase';
 
 @ApiTags('Product')
+@ApiBearerAuth()
 @Controller('product')
 export class CreateProductController {
   constructor(private readonly useCase: CreateProductUseCase) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   async createProduct(@Body() input: CreateProductDto): Promise<Product> {
     return this.useCase.createProduct({

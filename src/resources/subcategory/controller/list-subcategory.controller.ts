@@ -1,15 +1,18 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/common/guard/auth.guard';
 import { ToArrayNumberPipe } from 'src/common/pipes/to-array-number.pipe';
 import { ToArrayStringPipe } from 'src/common/pipes/to-array-string.pipe';
 import { Category } from 'src/resources/category/entity/category.entity';
 import { ListSubCategoryUseCase } from 'src/resources/subcategory/usecase/list-subcategory.usecase';
 
+@ApiBearerAuth()
 @ApiTags('SubCategory')
 @Controller('subcategory')
 export class ListSubCategoryController {
   constructor(private readonly useCase: ListSubCategoryUseCase) {}
 
+  @UseGuards(AuthGuard)
   @Get()
   @ApiQuery({
     name: 'name',

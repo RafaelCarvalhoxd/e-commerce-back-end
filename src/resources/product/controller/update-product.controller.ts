@@ -1,14 +1,17 @@
-import { Body, Controller, Param, Patch } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Param, Patch, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/common/guard/auth.guard';
 import { UpdateProductDto } from 'src/resources/product/dto/update-product.dto';
 import { Product } from 'src/resources/product/entity/product.entity';
 import { UpdateProductUseCase } from 'src/resources/product/usecase/update-product.usecase';
 
 @ApiTags('Product')
+@ApiBearerAuth()
 @Controller('product')
 export class UpdateProductController {
   constructor(private readonly useCase: UpdateProductUseCase) {}
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   async updateProduct(
     @Param('id') id: number,

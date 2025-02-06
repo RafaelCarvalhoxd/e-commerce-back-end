@@ -1,17 +1,20 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { ListProductUseCase } from 'src/resources/product/usecase/list-product.usecase';
 import { Pagination } from 'src/common/utils/pagination/pagination.util';
 import { Product } from 'src/resources/product/entity/product.entity';
-import { ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationPagePipe } from 'src/common/pipes/pagination-page.pipe';
 import { PaginationLimitPipe } from 'src/common/pipes/pagination-limit.pipe';
 import { ToArrayNumberPipe } from 'src/common/pipes/to-array-number.pipe';
+import { AuthGuard } from 'src/common/guard/auth.guard';
 
 @ApiTags('Product')
+@ApiBearerAuth()
 @Controller('product')
 export class ListProductController {
   constructor(private readonly useCase: ListProductUseCase) {}
 
+  @UseGuards(AuthGuard)
   @Get()
   @ApiQuery({
     name: 'name',
