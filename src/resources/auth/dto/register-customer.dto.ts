@@ -23,16 +23,22 @@ export class RegisterCustomerDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ example: 'password123' })
+  @ApiProperty({ example: 'Password123!' })
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
+  @Matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+    {
+      message:
+        'password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
+    },
+  )
   password: string;
 
   @ApiProperty({ example: 'password123' })
   @IsNotEmpty()
   @IsString()
-  @MinLength(6)
   confirmPassword: string;
 
   @ApiProperty({ example: '1990-01-01' })
