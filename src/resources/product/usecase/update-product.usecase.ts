@@ -1,3 +1,4 @@
+import { User } from 'src/common/types/user.type';
 import { Product } from 'src/resources/product/entity/product.entity';
 
 export abstract class UpdateProductUseCase {
@@ -12,5 +13,6 @@ export abstract class UpdateProductUseCase {
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    user: User;
   }): Promise<Product>;
 }

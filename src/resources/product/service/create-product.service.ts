@@ -1,4 +1,5 @@
 import { ConflictException, Injectable } from '@nestjs/common';
+import { User } from 'src/common/types/user.type';
 import { CreateProductRepositoryContract } from 'src/resources/product/contract/create-product.contract';
 import { FindProductRepositoryContract } from 'src/resources/product/contract/find-product.contract';
 import { Product } from 'src/resources/product/entity/product.entity';
@@ -21,6 +22,7 @@ export class CreateProductService implements CreateProductUseCase {
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    user: User;
   }): Promise<Product> {
     const existingProduct = await this.findProductRepository.findProduct({
       name: input.name,
@@ -43,6 +45,7 @@ export class CreateProductService implements CreateProductUseCase {
       subcategoryId: input.subcategoryId,
       discountPrice: input.discountPrice,
       active: input.active,
+      userId: input.user.id,
     });
     return product;
   }

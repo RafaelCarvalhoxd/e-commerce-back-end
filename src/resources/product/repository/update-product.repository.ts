@@ -25,6 +25,7 @@ export class UpdateProductRepository
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    userId: number;
   }): Promise<Product> {
     await this.repository.update(input.id, {
       name: input.name,
@@ -38,6 +39,9 @@ export class UpdateProductRepository
       },
       discountPrice: input.discountPrice,
       active: input.active,
+      updatedBy: {
+        id: input.userId,
+      },
     });
 
     const updatedProduct = await this.repository.findOne({

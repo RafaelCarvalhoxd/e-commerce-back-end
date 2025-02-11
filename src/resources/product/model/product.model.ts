@@ -1,4 +1,5 @@
 import { SubCategoryModel } from 'src/resources/subcategory/model/subcategory.model';
+import { UserModel } from 'src/resources/user/model/user.model';
 import {
   Column,
   CreateDateColumn,
@@ -41,6 +42,14 @@ export class ProductModel {
 
   @Column({ nullable: true, name: 'image', type: 'text' })
   image?: string;
+
+  @ManyToOne(() => UserModel)
+  @JoinColumn({ name: 'created_by' })
+  createdBy: UserModel;
+
+  @ManyToOne(() => UserModel)
+  @JoinColumn({ name: 'updated_by' })
+  updatedBy: UserModel;
 
   @CreateDateColumn({
     name: 'created_at',

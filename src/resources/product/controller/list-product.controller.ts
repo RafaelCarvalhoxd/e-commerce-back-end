@@ -7,6 +7,8 @@ import { PaginationPagePipe } from 'src/common/pipes/pagination-page.pipe';
 import { PaginationLimitPipe } from 'src/common/pipes/pagination-limit.pipe';
 import { ToArrayNumberPipe } from 'src/common/pipes/to-array-number.pipe';
 import { AuthGuard } from 'src/common/guard/auth.guard';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { UserRoles } from 'src/common/enums/roles.enum';
 
 @ApiTags('Product')
 @ApiBearerAuth()
@@ -14,6 +16,7 @@ import { AuthGuard } from 'src/common/guard/auth.guard';
 export class ListProductController {
   constructor(private readonly useCase: ListProductUseCase) {}
 
+  @Roles(UserRoles.OPERATIONS)
   @UseGuards(AuthGuard)
   @Get()
   @ApiQuery({

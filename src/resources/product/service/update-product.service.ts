@@ -3,6 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { User } from 'src/common/types/user.type';
 import { FindProductRepositoryContract } from 'src/resources/product/contract/find-product.contract';
 import { UpdateProductRepositoryContract } from 'src/resources/product/contract/update-product.contract';
 import { Product } from 'src/resources/product/entity/product.entity';
@@ -26,6 +27,7 @@ export class UpdateProductService implements UpdateProductUseCase {
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    user: User;
   }): Promise<Product> {
     const [existingProduct, product] = await Promise.all([
       this.findProductRepository.findProduct({ name: input.name }),
@@ -51,6 +53,7 @@ export class UpdateProductService implements UpdateProductUseCase {
       subcategoryId: input.subcategoryId ?? product.subcategory.id,
       discountPrice: input.discountPrice ?? product.discountPrice,
       active: input.active,
+      userId: input.user.id,
     });
     return updatedProduct;
   }

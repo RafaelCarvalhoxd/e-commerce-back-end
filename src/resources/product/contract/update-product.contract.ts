@@ -12,5 +12,6 @@ export abstract class UpdateProductRepositoryContract {
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    userId: number;
   }): Promise<Product>;
 }

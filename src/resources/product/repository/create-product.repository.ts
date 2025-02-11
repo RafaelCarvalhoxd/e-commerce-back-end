@@ -24,6 +24,7 @@ export class CreateProductRepository
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    userId: number;
   }): Promise<Product> {
     const product = this.repository.create({
       name: input.name,
@@ -37,6 +38,9 @@ export class CreateProductRepository
       },
       discountPrice: input.discountPrice,
       active: input.active,
+      createdBy: {
+        id: input.userId,
+      },
     });
 
     const savedProduct = await this.repository.save(product);

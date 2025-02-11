@@ -1,3 +1,4 @@
+import { User } from 'src/common/types/user.type';
 import { Product } from 'src/resources/product/entity/product.entity';
 
 export abstract class CreateProductUseCase {
@@ -11,5 +12,6 @@ export abstract class CreateProductUseCase {
     subcategoryId?: number;
     discountPrice?: string;
     active: boolean;
+    user: User;
   }): Promise<Product>;
 }
