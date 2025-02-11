@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from 'src/resources/auth/auth.module';
-import { BcryptModule } from 'src/resources/bcrypt/bcrypt.module';
+import { BcryptModule } from 'src/resources/shared/bcrypt/bcrypt.module';
 import { CategoryModule } from 'src/resources/category/category.module';
-import { JwtServiceModule } from 'src/resources/jwt/jwt.module';
+import { JwtServiceModule } from 'src/resources/shared/jwt/jwt.module';
 import { ProductModule } from 'src/resources/product/product.module';
 import { RoleModule } from 'src/resources/roles/roles.module';
 import { SubCategoryModule } from 'src/resources/subcategory/subcategory.module';

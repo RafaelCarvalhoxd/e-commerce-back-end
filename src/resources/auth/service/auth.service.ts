@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthUsecase } from 'src/resources/auth/usecase/auth.usecase';
-import { BcryptCompareContract } from 'src/resources/bcrypt/contract/bcrypt-compare.contract';
-import { JwtSignContract } from 'src/resources/jwt/contract/jwt-sign.contract';
+import { BcryptCompareContract } from 'src/resources/shared/bcrypt/contract/bcrypt-compare.contract';
+import { JwtSignContract } from 'src/resources/shared/jwt/contract/jwt-sign.contract';
 import { FindUserUseCase } from 'src/resources/user/usecase/find-user.usecase';
 
 @Injectable()

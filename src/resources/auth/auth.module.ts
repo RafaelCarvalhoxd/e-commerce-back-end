@@ -7,8 +7,8 @@ import { AuthService } from 'src/resources/auth/service/auth.service';
 import { RegisterCustomerService } from 'src/resources/auth/service/register-customer.service';
 import { AuthUsecase } from 'src/resources/auth/usecase/auth.usecase';
 import { RegisterCustomerUsecase } from 'src/resources/auth/usecase/register-customer.usecase';
-import { BcryptModule } from 'src/resources/bcrypt/bcrypt.module';
-import { JwtServiceModule } from 'src/resources/jwt/jwt.module';
+import { BcryptModule } from 'src/resources/shared/bcrypt/bcrypt.module';
+import { JwtServiceModule } from 'src/resources/shared/jwt/jwt.module';
 import { UserModule } from 'src/resources/user/user.module';
 
 const resources: Provider[] = [

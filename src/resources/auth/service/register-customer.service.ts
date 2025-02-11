@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { RegisterUserRepositoryContract } from 'src/resources/auth/contract/register-user.contract';
 import { RegisterCustomerUsecase } from 'src/resources/auth/usecase/register-customer.usecase';
-import { BcryptHashContract } from 'src/resources/bcrypt/contract/bcrypt.hash.contract';
+import { BcryptHashContract } from 'src/resources/shared/bcrypt/contract/bcrypt.hash.contract';
 import { FindUserRepositoryContract } from 'src/resources/user/contract/find-user.contract';
 import { User } from 'src/resources/user/entity/user.entity';
 
