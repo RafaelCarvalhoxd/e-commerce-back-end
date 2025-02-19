@@ -4,15 +4,18 @@ import { CreateCartRepositoryContract } from 'src/resources/cart/contract/create
 import { FindCartRepositoryContract } from 'src/resources/cart/contract/find-cart.contract';
 import { Cart } from 'src/resources/cart/entity/cart.entity';
 import { CreateCartUseCase } from 'src/resources/cart/usecase/create-cart.usecase';
+import { FindProductUseCase } from 'src/resources/product/usecase/find-product.usecase';
 
 @Injectable()
 export class CreateCartService implements CreateCartUseCase {
   constructor(
     private readonly findCartRepository: FindCartRepositoryContract,
     private readonly createCartRepository: CreateCartRepositoryContract,
+    private readonly findProductUsecase: FindProductUseCase,
   ) {}
 
   async execute(input: { user: User; productId: number }): Promise<Cart> {
+    await this.findProductUsecase.findProduct({ id: input.productId });
     const cart = await this.findCartRepository.execute({
       userId: input.user.id,
       productId: input.productId,

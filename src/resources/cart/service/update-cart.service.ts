@@ -4,12 +4,14 @@ import { UpdateCartRepositoryContract } from 'src/resources/cart/contract/update
 import { Cart } from 'src/resources/cart/entity/cart.entity';
 import { FindCartUsecase } from 'src/resources/cart/usecase/find-cart.usecase';
 import { UpdateCartUsecase } from 'src/resources/cart/usecase/update-cart.usecase';
+import { FindProductUseCase } from 'src/resources/product/usecase/find-product.usecase';
 
 @Injectable()
 export class UpdateCartService implements UpdateCartUsecase {
   constructor(
     private readonly findCartUsecase: FindCartUsecase,
     private readonly updateCartRepository: UpdateCartRepositoryContract,
+    private readonly findProductUsecase: FindProductUseCase,
   ) {}
 
   async execute(input: {
@@ -17,10 +19,13 @@ export class UpdateCartService implements UpdateCartUsecase {
     productId: number;
     quantity: number;
   }): Promise<Cart> {
-    await this.findCartUsecase.execute({
-      user: input.user,
-      productId: input.productId,
-    });
+    await Promise.all([
+      this.findProductUsecase.findProduct({ id: input.productId }),
+      this.findCartUsecase.execute({
+        user: input.user,
+        productId: input.productId,
+      }),
+    ]);
     const updatedCart = await this.updateCartRepository.execute({
       userId: input.user.id,
       productId: input.productId,
