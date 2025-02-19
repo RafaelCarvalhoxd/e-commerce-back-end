@@ -7,6 +7,7 @@ import { ProductModule } from 'src/resources/product/product.module';
 import { RoleModule } from 'src/resources/roles/roles.module';
 import { SubCategoryModule } from 'src/resources/subcategory/subcategory.module';
 import { UserModule } from 'src/resources/user/user.module';
+import { CartModule } from 'src/resources/cart/cart.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from 'src/resources/user/user.module';
     JwtServiceModule,
     UserModule,
     AuthModule,
+    CartModule,
   ],
   exports: [
     ProductModule,
@@ -28,6 +30,7 @@ import { UserModule } from 'src/resources/user/user.module';
     JwtServiceModule,
     UserModule,
     AuthModule,
+    CartModule,
   ],
 })
 export class ResourceModule {}
