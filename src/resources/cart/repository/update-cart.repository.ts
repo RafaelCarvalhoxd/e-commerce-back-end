@@ -44,6 +44,6 @@ export class UpdateCartRepository implements UpdateCartRepositoryContract {
       },
     });
 
-    return cart;
+    return cart.toEntity();
   }
 }

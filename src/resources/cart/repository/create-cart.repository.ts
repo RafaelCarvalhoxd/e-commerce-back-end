@@ -29,6 +29,6 @@ export class CreateCartRepository implements CreateCartRepositoryContract {
 
     const savedCart = await this.repository.save(cart);
 
-    return savedCart;
+    return savedCart.toEntity();
   }
 }

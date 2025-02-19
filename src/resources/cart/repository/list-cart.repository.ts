@@ -24,6 +24,6 @@ export class ListCartRepository implements ListCartRepositoryContract {
       },
     });
 
-    return carts;
+    return carts.map((cart) => cart.toEntity());
   }
 }
